@@ -1,0 +1,44 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.column {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.colHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  border-top: 3px solid transparent;
+}
+
+.colLabel { font-size: 13px; font-weight: 700; color: var(--text); }
+.colCount {
+  background: var(--surface2);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.colBody { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.empty { font-size: 13px; color: var(--text-subtle); text-align: center; padding: 24px 0; }
+
+@media (max-width: 900px) {
+  .board { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .board { grid-template-columns: 1fr 1fr; }
+}

@@ -1,0 +1,28 @@
+.form { display: flex; flex-direction: column; gap: 16px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+input, textarea, select {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 9px 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+.inputError { border-color: var(--danger) !important; }
+
+textarea { resize: vertical; min-height: 80px; }
+
+select option { background: var(--surface); }
+
+.error { font-size: 12px; color: var(--danger); }
+
+.actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
