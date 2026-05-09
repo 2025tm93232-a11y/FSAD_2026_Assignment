@@ -2,6 +2,7 @@
 
 Course: SE ZG503 — Full Stack Application Development  
 Semester: II, 2025-2026 
+Built By - Pulla Hari Sai Vamshi (2025TM93232)
 Institution: BITS Pilani  
 AI Tool Used: Claude (Anthropic) via Windsurf IDE (Cascade)  
 
