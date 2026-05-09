@@ -1,6 +1,6 @@
-# How It Works — TaskFlow Architecture & Workflow
+ How It Works — TaskFlow Architecture & Workflow
 
-## Architecture Overview
+ Architecture Overview
 
 ```
 Browser (React SPA)
@@ -14,14 +14,14 @@ Express.js Server (port 5000)
 SQLite Database (taskflow.db)
 ```
 
-The application follows a classic **3-tier architecture**:
-1. **Presentation Layer** — React SPA with client-side routing (React Router v6)
-2. **Application/API Layer** — Express.js REST API with validation and Swagger docs
-3. **Data Layer** — SQLite via Node.js built-in `node:sqlite` (no native compilation)
+The application follows a classic 3-tier architecture:
+1. Presentation Layer — React SPA with client-side routing (React Router v6)
+2. Application/API Layer — Express.js REST API with validation and Swagger docs
+3. Data Layer — SQLite via Node.js built-in `node:sqlite` (no native compilation)
 
----
 
-## Frontend Data Flow
+
+ Frontend Data Flow
 
 ```
 User Action
@@ -45,14 +45,14 @@ TanStack Query cache updated
 UI updates automatically
 ```
 
-### State Management Strategy
-- **Server state** (projects, tasks, stats): managed by TanStack Query with 30-second stale time
-- **UI state** (modal open/close, form values, filters): local `useState` in each page component
-- **Navigation state**: React Router v6 URL params
+ State Management Strategy
+- Server state (projects, tasks, stats): managed by TanStack Query with 30-second stale time
+- UI state (modal open/close, form values, filters): local `useState` in each page component
+- Navigation state: React Router v6 URL params
 
----
 
-## Backend Request Lifecycle
+
+ Backend Request Lifecycle
 
 ```
 HTTP Request
@@ -76,9 +76,9 @@ Business logic + node:sqlite queries
 JSON Response (200/201/404/422/500)
 ```
 
----
 
-## Component Hierarchy
+
+ Component Hierarchy
 
 ```
 App.js (React Router)
@@ -102,40 +102,40 @@ Shared Components:
 └── EmptyState (zero-data placeholder)
 ```
 
----
 
-## Key Design Decisions
 
-### 1. Built-in `node:sqlite` over `better-sqlite3`
+ Key Design Decisions
+
+ 1. Built-in `node:sqlite` over `better-sqlite3`
 Node v22.9+ ships with `node:sqlite` as a stable built-in module providing a synchronous SQLite API. This eliminates native compilation issues (`node-gyp`) that affect `better-sqlite3` on newer Node/macOS combinations. The API is nearly identical to `better-sqlite3`.
 
-### 2. CSS Modules for Scoped Styling
+ 2. CSS Modules for Scoped Styling
 Each component has its own `.module.css` file, preventing style collisions and keeping styles co-located with components. A shared CSS variable system (`:root` in `index.css`) provides a consistent dark-theme design system.
 
-### 3. TanStack Query for API State
+ 3. TanStack Query for API State
 Instead of `useEffect` + `useState` for every API call, TanStack Query provides:
 - Automatic background refetching
 - Cache invalidation on mutations
 - Loading/error states out of the box
 - Optimistic updates capability
 
-### 4. Swagger via `swagger-jsdoc`
+ 4. Swagger via `swagger-jsdoc`
 JSDoc comments directly in route files generate the OpenAPI spec. This keeps documentation co-located with code and always in sync.
 
-### 5. Cascade Deletes in SQLite
+ 5. Cascade Deletes in SQLite
 `FOREIGN KEY ... ON DELETE CASCADE` ensures that deleting a project automatically removes all its tasks and comments. This is enabled at the SQLite level with `PRAGMA foreign_keys = ON`.
 
----
 
-## Validation Rules
 
-### Projects
+ Validation Rules
+
+ Projects
 - `name`: required, max 100 characters
 - `description`: optional, max 500 characters
 - `priority`: enum `[low, medium, high]`
 - `status`: enum `[active, completed, archived]`
 
-### Tasks
+ Tasks
 - `title`: required, max 200 characters
 - `description`: optional, max 1000 characters
 - `status`: enum `[todo, in_progress, done]`
@@ -143,13 +143,13 @@ JSDoc comments directly in route files generate the OpenAPI spec. This keeps doc
 - `due_date`: optional, must be ISO 8601 date format
 - `assignee`: optional, max 100 characters
 
-### Comments
+ Comments
 - `author`: required, max 100 characters
 - `content`: required, max 2000 characters
 
----
 
-## Running in Production
+
+ Running in Production
 
 For a production deployment:
 1. Set `process.env.PORT` for the backend
@@ -158,7 +158,7 @@ For a production deployment:
 4. Use a process manager like PM2 for the backend
 
 ```bash
-# In server.js, add after routes:
+ In server.js, add after routes:
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../frontend/build/index.html')));
 ```

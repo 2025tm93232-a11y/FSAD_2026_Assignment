@@ -1,33 +1,33 @@
 # TaskFlow — Full Stack Task & Project Management System
 
-> **BITS Pilani FSAD Assignment 2026 — SE ZG503**  
+> BITS Pilani FSAD Assignment 2026 — SE ZG503  
 > Built with React + Node.js/Express + SQLite (node:sqlite)
 
----
 
-## Problem Statement
+
+ Problem Statement
 
 TaskFlow is a collaborative project and task management system that allows teams to:
-- Create and manage **projects** with priority levels and statuses
-- Add **tasks** to projects with status tracking (Kanban board & list view)
+- Create and manage projects with priority levels and statuses
+- Add tasks to projects with status tracking (Kanban board & list view)
 - Assign tasks, set due dates, and track overdue work
-- Add **comments** to tasks for collaboration
-- View **analytics** dashboards with task completion metrics
+- Add comments to tasks for collaboration
+- View analytics dashboards with task completion metrics
 
----
 
-## Tech Stack
+
+ Tech Stack
 
 | Layer | Technology |
-|---|---|
+|||
 | Frontend | React 18, React Router v6, TanStack Query, React Hot Toast |
 | Backend | Node.js, Express 4, node:sqlite (built-in, no native deps) |
 | API Docs | Swagger UI (http://localhost:5000/api/docs) |
 | Styling | CSS Modules, custom dark-theme design system |
 
----
 
-## Project Structure
+
+ Project Structure
 
 ```
 full stack application/
@@ -62,15 +62,15 @@ full stack application/
 └── AI_USAGE_LOG.md
 ```
 
----
 
-## Quick Start
 
-### Prerequisites
+ Quick Start
+
+ Prerequisites
 - Node.js v22.9+ (v25 recommended — uses built-in `node:sqlite`)
 - npm v9+
 
-### 1. Start Backend
+ 1. Start Backend
 ```bash
 cd backend
 npm install
@@ -79,7 +79,7 @@ npm start
 # Swagger docs at http://localhost:5000/api/docs
 ```
 
-### 2. Start Frontend
+ 2. Start Frontend
 ```bash
 cd frontend
 npm install --legacy-peer-deps
@@ -87,12 +87,12 @@ npm start
 # UI running at http://localhost:3000
 ```
 
----
 
-## API Endpoints Summary
+
+ API Endpoints Summary
 
 | Method | Path | Description |
-|---|---|---|
+||||
 | GET | /api/projects | List all projects |
 | POST | /api/projects | Create project |
 | PUT | /api/projects/:id | Update project |
@@ -106,24 +106,24 @@ npm start
 | GET | /api/stats | Dashboard statistics |
 | GET | /api/health | Health check |
 
-Full interactive docs: **http://localhost:5000/api/docs**
+Full interactive docs: http://localhost:5000/api/docs
 
----
 
-## Features
 
-- **Kanban Board** — drag tasks across To Do / In Progress / Done columns visually
-- **List View** — compact list with inline status editing
-- **Task Detail Modal** — view/add/delete comments per task
-- **Analytics Page** — donut & bar charts for task status and priority breakdown
-- **Responsive Design** — works on mobile (hamburger sidebar)
-- **Real-time Connection Status** — shows online/offline state in header
-- **Input Validation** — server-side via express-validator + client-side
-- **Swagger UI** — fully documented REST API
+ Features
 
----
+- Kanban Board — drag tasks across To Do / In Progress / Done columns visually
+- List View — compact list with inline status editing
+- Task Detail Modal — view/add/delete comments per task
+- Analytics Page — donut & bar charts for task status and priority breakdown
+- Responsive Design — works on mobile (hamburger sidebar)
+- Real-time Connection Status — shows online/offline state in header
+- Input Validation — server-side via express-validator + client-side
+- Swagger UI — fully documented REST API
 
-## DB Schema
+
+
+ DB Schema
 
 ```sql
 projects (id, name, description, status, priority, created_at, updated_at)
